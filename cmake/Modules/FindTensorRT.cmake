@@ -14,11 +14,11 @@
 
 include(FindPackageHandleStandardArgs)
 
-if(NOT DEFINED TENSORRT_ROOT_DIR)
-  if(DEFINED ENV{TENSORRT_ROOT_DIR})
-    set(TENSORRT_ROOT_DIR $ENV{TENSORRT_ROOT_DIR})
+if(NOT DEFINED TENSORRT_ROOT)
+  if(DEFINED ENV{TENSORRT_ROOT})
+    set(TENSORRT_ROOT $ENV{TENSORRT_ROOT})
   else()
-    set(TENSORRT_ROOT_DIR "/usr" CACHE PATH "Folder contains NVIDIA TensorRT")
+    set(TENSORRT_ROOT "/usr" CACHE PATH "Folder contains NVIDIA TensorRT")
   endif()
 endif()
 

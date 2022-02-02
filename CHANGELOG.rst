@@ -2,8 +2,8 @@
 Changelog for package tensorrt_cmake_module
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.2 (2022-02-02)
+------------------
 * fix: fix cmake variable name
 * Contributors: wep21
 

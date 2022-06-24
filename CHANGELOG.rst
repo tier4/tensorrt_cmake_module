@@ -2,8 +2,8 @@
 Changelog for package tensorrt_cmake_module
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.3 (2022-06-24)
+------------------
 * chore: rename cmake file
 * Contributors: Daisuke Nishimatsu
 

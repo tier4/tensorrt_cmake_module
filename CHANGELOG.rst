@@ -2,6 +2,11 @@
 Changelog for package tensorrt_cmake_module
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.0.4 (2024-12-20)
+------------------
+* feat: not including deprecated lib for TRT 9+
+* Contributors: Amadeusz Szymko
+
 0.0.3 (2022-06-24)
 ------------------
 * chore: rename cmake file

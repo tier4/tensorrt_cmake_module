@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>tensorrt_cmake_module</name>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <description>Exports a CMake module to find TensorRT.</description>
 
   <author email="daisuke.nishimatsu@tier4.jp">Daisuke Nishimatsu</author>
   <maintainer email="daisuke.nishimatsu@tier4.jp">Daisuke Nishimatsu</maintainer>
+  <maintainer email="amadeusz.szymko.2@tier4.jp">Amadeusz Szymko</maintainer>
 
   <license>Apache License 2.0</license>
 

@@ -34,12 +34,33 @@ if(TENSORRT_INCLUDE_DIR)
     file(READ "${TENSORRT_INCLUDE_DIR}/NvInfer.h" TENSORRT_H_CONTENTS)
   endif()
 
-  string(REGEX MATCH "define NV_TENSORRT_MAJOR ([0-9]+)" _ "${TENSORRT_H_CONTENTS}")
-  set(TENSORRT_VERSION_MAJOR ${CMAKE_MATCH_1} CACHE INTERNAL "")
-  string(REGEX MATCH "define NV_TENSORRT_MINOR ([0-9]+)" _ "${TENSORRT_H_CONTENTS}")
-  set(TENSORRT_VERSION_MINOR ${CMAKE_MATCH_1} CACHE INTERNAL "")
-  string(REGEX MATCH "define NV_TENSORRT_PATCH ([0-9]+)" _ "${TENSORRT_H_CONTENTS}")
-  set(TENSORRT_VERSION_PATCH ${CMAKE_MATCH_1} CACHE INTERNAL "")
+  # ==============================
+  # TensorRT version detection
+  # Supports both classic and TRT10 Enterprise macros
+  # ==============================
+
+  # --- Try classic numeric macros first ---
+  string(REGEX MATCH "define[ \t]+NV_TENSORRT_MAJOR[ \t]+([0-9]+)" _ "${TENSORRT_H_CONTENTS}")
+  set(TENSORRT_VERSION_MAJOR "${CMAKE_MATCH_1}")
+
+  string(REGEX MATCH "define[ \t]+NV_TENSORRT_MINOR[ \t]+([0-9]+)" _ "${TENSORRT_H_CONTENTS}")
+  set(TENSORRT_VERSION_MINOR "${CMAKE_MATCH_1}")
+
+  string(REGEX MATCH "define[ \t]+NV_TENSORRT_PATCH[ \t]+([0-9]+)" _ "${TENSORRT_H_CONTENTS}")
+  set(TENSORRT_VERSION_PATCH "${CMAKE_MATCH_1}")
+
+  # --- TRT10 Enterprise fallback ---
+  # NV_TENSORRT_* may map to TRT_*_ENTERPRISE macros
+  if(NOT TENSORRT_VERSION_MAJOR)
+    string(REGEX MATCH "define[ \t]+TRT_MAJOR_ENTERPRISE[ \t]+([0-9]+)" _ "${TENSORRT_H_CONTENTS}")
+    set(TENSORRT_VERSION_MAJOR "${CMAKE_MATCH_1}")
+
+    string(REGEX MATCH "define[ \t]+TRT_MINOR_ENTERPRISE[ \t]+([0-9]+)" _ "${TENSORRT_H_CONTENTS}")
+    set(TENSORRT_VERSION_MINOR "${CMAKE_MATCH_1}")
+
+    string(REGEX MATCH "define[ \t]+TRT_PATCH_ENTERPRISE[ \t]+([0-9]+)" _ "${TENSORRT_H_CONTENTS}")
+    set(TENSORRT_VERSION_PATCH "${CMAKE_MATCH_1}")
+  endif()
 
   set(TENSORRT_VERSION
     "${TENSORRT_VERSION_MAJOR}.${TENSORRT_VERSION_MINOR}.${TENSORRT_VERSION_PATCH}"

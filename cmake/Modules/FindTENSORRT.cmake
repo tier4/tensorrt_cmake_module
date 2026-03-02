@@ -43,8 +43,8 @@ if(TENSORRT_INCLUDE_DIR)
   string(REGEX MATCH "define[ \t]+NV_TENSORRT_PATCH[ \t]+([0-9]+)" _ "${TENSORRT_H_CONTENTS}")
   set(TENSORRT_VERSION_PATCH "${CMAKE_MATCH_1}")
 
-  # --- TRT10 Enterprise fallback ---
-  # NV_TENSORRT_* may map to TRT_*_ENTERPRISE macros
+  # TRT 10.11+ aliases NV_TENSORRT_* to TRT_*_ENTERPRISE, regex can't resolve preprocessor
+  # indirection, so match the underlying macros directly
   if(NOT TENSORRT_VERSION_MAJOR)
     string(REGEX MATCH "define[ \t]+TRT_MAJOR_ENTERPRISE[ \t]+([0-9]+)" _ "${TENSORRT_H_CONTENTS}")
     set(TENSORRT_VERSION_MAJOR "${CMAKE_MATCH_1}")

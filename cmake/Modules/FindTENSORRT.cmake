@@ -34,12 +34,6 @@ if(TENSORRT_INCLUDE_DIR)
     file(READ "${TENSORRT_INCLUDE_DIR}/NvInfer.h" TENSORRT_H_CONTENTS)
   endif()
 
-  # ==============================
-  # TensorRT version detection
-  # Supports both classic and TRT10 Enterprise macros
-  # ==============================
-
-  # --- Try classic numeric macros first ---
   string(REGEX MATCH "define[ \t]+NV_TENSORRT_MAJOR[ \t]+([0-9]+)" _ "${TENSORRT_H_CONTENTS}")
   set(TENSORRT_VERSION_MAJOR "${CMAKE_MATCH_1}")
 

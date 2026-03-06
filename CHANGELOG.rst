@@ -2,6 +2,12 @@
 Changelog for package tensorrt_cmake_module
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* feat: add tensorrt-10 support (`#3 <https://github.com/tier4/tensorrt_cmake_module//issues/3>`_)
+  Co-authored-by: Amadeusz Szymko <amadeuszszymko@gmail.com>
+* Contributors: Mark Jin
+
 0.0.4 (2024-12-23)
 ------------------
 * feat: not including deprecated lib for TRT 9+ (`#1 <https://github.com/tier4/tensorrt_cmake_module//issues/1>`_)

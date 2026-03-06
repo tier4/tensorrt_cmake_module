@@ -2,8 +2,8 @@
 Changelog for package tensorrt_cmake_module
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.5 (2026-03-06)
+------------------
 * feat: add tensorrt-10 support (`#3 <https://github.com/tier4/tensorrt_cmake_module//issues/3>`_)
   Co-authored-by: Amadeusz Szymko <amadeuszszymko@gmail.com>
 * Contributors: Mark Jin

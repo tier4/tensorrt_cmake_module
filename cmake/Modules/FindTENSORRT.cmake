@@ -24,7 +24,7 @@ endif()
 
 find_path(TENSORRT_INCLUDE_DIR NvInfer.h
   HINTS ${TENSORRT_ROOT} ${CUDA_TOOLKIT_ROOT_DIR}
-  PATH_SUFFIXES include)
+  PATH_SUFFIXES include include/aarch64-linux-gnu)
 message(STATUS "Found TensorRT headers at ${TENSORRT_INCLUDE_DIR}")
 
 if(TENSORRT_INCLUDE_DIR)
@@ -68,13 +68,13 @@ endif()
 
 find_library(TENSORRT_NVINFER_LIBRARY nvinfer
   HINTS ${TENSORRT_ROOT} ${CUDA_TOOLKIT_ROOT_DIR}
-  PATH_SUFFIXES lib lib64 lib/x64)
+  PATH_SUFFIXES lib lib64 lib/x64 lib/aarch64-linux-gnu)
 find_library(TENSORRT_NVINFER_PLUGIN_LIBRARY nvinfer_plugin
   HINTS  ${TENSORRT_ROOT} ${CUDA_TOOLKIT_ROOT_DIR}
-  PATH_SUFFIXES lib lib64 lib/x64)
+  PATH_SUFFIXES lib lib64 lib/x64 lib/aarch64-linux-gnu)
 find_library(TENSORRT_NVONNXPARSER_LIBRARY nvonnxparser
   HINTS ${TENSORRT_ROOT} ${CUDA_TOOLKIT_ROOT_DIR}
-  PATH_SUFFIXES lib lib64 lib/x64)
+  PATH_SUFFIXES lib lib64 lib/x64 lib/aarch64-linux-gnu)
 set(TENSORRT_LIBRARY
   ${TENSORRT_NVINFER_LIBRARY}
   ${TENSORRT_NVINFER_PLUGIN_LIBRARY}
@@ -82,7 +82,7 @@ set(TENSORRT_LIBRARY
 if(TENSORRT_VERSION_MAJOR VERSION_LESS 9)
   find_library(TENSORRT_NVPARSERS_LIBRARY nvparsers
     HINTS ${TENSORRT_ROOT} ${CUDA_TOOLKIT_ROOT_DIR}
-    PATH_SUFFIXES lib lib64 lib/x64)
+    PATH_SUFFIXES lib lib64 lib/x64 lib/aarch64-linux-gnu)
   list(APPEND TENSORRT_LIBRARY ${TENSORRT_NVPARSERS_LIBRARY})
 endif()
 message(STATUS "Found TensorRT libs at ${TENSORRT_LIBRARY}")
